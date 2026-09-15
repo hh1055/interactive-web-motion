@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #000;
+    }
+
+    /* 1.定义动画 */
+    @keyframes move {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(400px, 0);
+      }
+    }
+
+    /* 2.调用动画 */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      /* animation:动画名称 动画时长 速度曲线 延迟时间 播放次数 播放时间 执行完毕状态 */
+      /* infinite 无限循环 */
+      /* alternate 往返播放 */
+      /* forwards 执行完毕后保持最后一帧的状态 */
+      /* animation: move 2s ease 0s infinite alternate; */
+      animation: move 2s ease 0s forwards;
+    }
+
+    /* 第一定义动画 */
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* 第二调用动画 */
+    .circle {
+      /* 动画匀速并且无限转圈 */
+      animation: rotate 2s linear 0s infinite;
+    }
+
+    .circle:hover {
+      /* 鼠标经过暂停动画，离开继续 */
+      /* 不能写在animation里，要单独写 */
+      animation-play-state: paused;
+    }
+
+    /* 第一定义动画 */
+    @keyframes sctollTip {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(15px);
+      }
+    }
+
+    /* 第二调用动画 */
+    .scrollTip {
+      animation: sctollTip 1s linear 0s infinite alternate;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <img src="./img/circle.png" alt="" class="circle">
+  <img src="./img/scrollTip.png" alt="" class="scrollTip">
+</body>
+
+</html>
