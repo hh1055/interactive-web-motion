@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .box {
+      overflow: hidden;
+      width: 1320px;
+      height: 527px;
+      margin: 100px auto;
+    }
+
+    .box ul {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-rows: 527px;
+      gap: 8px;
+      /* 过度给父亲加，因为父亲负责修改份数 */
+      transition: all 0.5s;
+    }
+
+    .box .item {
+      position: relative;
+      background: url(./img/pic1.jpg) no-repeat 50%/cover;
+    }
+
+    .box .item:nth-child(2) {
+      background-image: url(./img/pic2.jpg);
+    }
+
+    .box .item:nth-child(3) {
+      background-image: url(./img/pic3.jpg);
+    }
+
+    .box .item:nth-child(4) {
+      background-image: url(./img/pic4.jpg);
+    }
+
+    /* 鼠标经过li，让父亲ul修改里面的份数 has(父亲选择器）*/
+    /* 当鼠标经过第一个li时，把ul选中（.item这里指li) */
+    .box ul:has(.item:nth-child(1):hover) {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+
+    .box ul:has(.item:nth-child(2):hover) {
+      grid-template-columns: 1fr 2fr 1fr 1fr;
+    }
+
+    .box ul:has(.item:nth-child(3):hover) {
+      grid-template-columns: 1fr 1fr 2fr 1fr;
+    }
+
+    .box ul:has(.item:nth-child(4):hover) {
+      grid-template-columns: 1fr 1fr 1fr 2fr;
+    }
+
+    .item p {
+      position: absolute;
+      left: 0;
+      bottom: -1000px;
+      color: #fff;
+      padding: 20px;
+    }
+
+    /* 鼠标经过item，让p显示出来 */
+    .item:hover p {
+      bottom: 0;
+      transition: all 0.5s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <ul>
+      <li class="item">
+        <p>超长质保</p>
+      </li>
+      <li class="item">
+        <p>超长质保</p>
+      </li>
+      <li class="item">
+        <p>超长质保</p>
+      </li>
+      <li class="item">
+        <p>超长质保</p>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
